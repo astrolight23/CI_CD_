@@ -7,7 +7,11 @@ COPY ./frontend/package*.json ./
 RUN npm install
 
 COPY ./frontend ./
+
+ENV NODE_OPTIONS=--openssl-legacy-provider
+
 RUN npm run build
+
 
 # Stage 2: Set up backend and serve frontend
 FROM node:18
